@@ -1,6 +1,6 @@
 import requests
 import shutil
-image_url = "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+image_url = "https://rickandmortyapi.com/api/character/avatar/7.jpeg"
 
 
 filename =image_url.split("/")[-1]
