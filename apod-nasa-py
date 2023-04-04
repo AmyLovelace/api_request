@@ -1,0 +1,20 @@
+import requests
+
+#api_key = 'ijc5THszU4PUbJvPWoAexIWNP2P6Gbe5RYxwDzYX' 
+date ='1998-06-14'
+url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={date}'
+
+response = requests.get(url)
+
+if response.ok:
+    apod_data = response.json()
+    image_url = apod_data['url']
+    image_response = requests.get(image_url)
+    if image_response.ok:
+        with open('apod_image.jpg', 'wb') as f:
+            f.write(image_response.content)
+        print('Image downloaded successfully.')
+    else:
+        print(f'Image request failed with status code {image_response.status_code}')
+else:
+    print(f'Request failed with status code {response.status_code}')
